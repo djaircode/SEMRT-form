@@ -1,4 +1,4 @@
 from django.shortcuts import render, HttpResponse
 
 def home(request):
-    return HttpResponse("Start projeto SEMRT")
+    return render(request, 'home.html')
