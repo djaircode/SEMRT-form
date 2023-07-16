@@ -6,7 +6,7 @@
         <h4>SEMRT - Termo de medição</h4>
     </div>
     <div class="row">
-        <form action="" method="POST"> {% csrf_token %}
+        <form action="{% url 'cadastrar_imovel' %}" method="POST" enctype="multipart/form-data"> {% csrf_token %}
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Nome do interessado (a)</label>
                 <input type="text" class="form-control" name="nome">
@@ -22,19 +22,19 @@
                 <div class="col">
                     <div class="mb-3">
                         <label for="exampleFormControlInput1" class="form-label">Bairro</label>
-                        <input type="text" class="form-control" name="bairo" >
+                        <input type="text" class="form-control" name="bairro" >
                     </div>
                 </div>
                 <h6>*O endereço do interessado é diferente do terreno medido?</h6>
                 <div class="form-check px-5">
                     
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                    <input class="form-check-input" type="radio" name="endereco_diferente" value="S">
                     <label class="form-check-label" for="flexRadioDefault1">
                         Sim
                     </label>
                 </div>
                 <div class="form-check px-5">
-                <input class="form-check-input" type="radio" name="flexRadioDefault">
+                <input class="form-check-input" type="radio" name="endereco_diferente" value="N">
                 <label class="form-check-label">
                     Não
                 </label>
@@ -47,13 +47,13 @@
             <div class="col">
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Rua</label>
-                    <input type="text" class="form-control" name="rua" placeholder="Nome da rua mais o número">
+                    <input type="text" class="form-control" name="rua_medido" placeholder="Nome da rua mais o número">
                 </div>
             </div>
             <div class="col">
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Bairro</label>
-                    <input type="text" class="form-control" name="bairo" >
+                    <input type="text" class="form-control" name="bairro_medido" >
                 </div>
             </div>
             </div>
@@ -65,13 +65,13 @@
                     <div class="col">
                         <div class="mb-3">
                             <label for="exampleFormControlInput1" class="form-label">Frente</label>
-                            <input type="number" class="form-control" name="rua">
+                            <input type="number" class="form-control" name="frente">
                         </div>
                     </div>
                     <div class="col">
                         <div class="mb-3">
                             <label for="exampleFormControlInput1" class="form-label">Fundo</label>
-                            <input type="number" class="form-control" name="bairo" >
+                            <input type="number" class="form-control" name="fundo" >
                         </div>
                     </div>
                 </div>
@@ -79,13 +79,13 @@
                     <div class="col">
                         <div class="mb-3">
                             <label for="exampleFormControlInput1" class="form-label">Lado direito</label>
-                            <input type="number" class="form-control" name="rua">
+                            <input type="number" class="form-control" name="lado_direito">
                         </div>
                     </div>
                     <div class="col">
                         <div class="mb-3">
                             <label for="exampleFormControlInput1" class="form-label">Lado esquerdo</label>
-                            <input type="number" class="form-control" name="bairo" >
+                            <input type="number" class="form-control" name="lado_esquerdo" >
                         </div>
                     </div>
                 </div>
@@ -93,13 +93,13 @@
                     <div class="col">
                         <div class="mb-3">
                             <label for="exampleFormControlInput1" class="form-label">Área(m²)</label>
-                            <input type="number" class="form-control" name="rua">
+                            <input type="number" class="form-control" name="area">
                         </div>
                     </div>
                     <div class="col">
                         <div class="mb-3">
                             <label for="exampleFormControlInput1" class="form-label">Perimétro</label>
-                            <input type="number" class="form-control" name="bairo" >
+                            <input type="number" class="form-control" name="perimetro" >
                         </div>
                     </div>
                 </div>
@@ -110,13 +110,13 @@
                     <div class="col">
                         <div class="mb-3">
                             <label for="exampleFormControlInput1" class="form-label">Frente com:</label>
-                            <input type="number" class="form-control" name="rua">
+                            <input type="text" class="form-control" name="frente_com">
                         </div>
                     </div>
                     <div class="col">
                         <div class="mb-3">
                             <label for="exampleFormControlInput1" class="form-label">Lado esquerdo com:</label>
-                            <input type="number" class="form-control" name="bairo" >
+                            <input type="text" class="form-control" name="esquerda_com" >
                         </div>
                     </div>
                     
@@ -124,14 +124,14 @@
                 <div class="row ">
                     <div class="col">
                         <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label">Frente com:</label>
-                            <input type="number" class="form-control" name="rua">
+                            <label for="exampleFormControlInput1" class="form-label">Lado direito com:</label>
+                            <input type="text" class="form-control" name="direita_com">
                         </div>
                     </div>
                     <div class="col">
                         <div class="mb-3">
                             <label for="exampleFormControlInput1" class="form-label">Fundo com:</label>
-                            <input type="number" class="form-control" name="bairo" >
+                            <input type="text" class="form-control" name="fundo_com" >
                         </div>
                     </div>
                 </div>
@@ -139,26 +139,26 @@
             <div class="row mb-3">
                 <div class="col">
                  <label for="exampleFormControlTextarea1" class="form-label">Observação</label>
-                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="6"></textarea>
+                 <textarea class="form-control" name="observacao" rows="6"></textarea>
                 </div>
             </div>
             <hr>
             <h4>Qual documento que possui?</h4>
             <div class="row mb-4 mx-4">
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <input class="form-check-input" type="checkbox" name="documento" value="Título Definitivo" >
                     <label class="form-check-label" for="flexCheckDefault">
                         Título Definitivo
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                    <input class="form-check-input" type="checkbox" name="documento" value="Termo de Aforamento">
                     <label class="form-check-label" for="flexCheckChecked">
                         Termo de Aforamento
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                    <input class="form-check-input" type="checkbox" name="documento" value="Registro de Imóvel">
                     <label class="form-check-label" for="flexCheckChecked">
                         Registro de Imóvel
                     </label>
@@ -166,20 +166,20 @@
             </div>
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Nome  1º dono (a)</label>
-                <input type="text" class="form-control" name="nome">
+                <input type="text" class="form-control" name="primeiro_dono">
             </div>
             <div class="row mt-3 mb-2">
                 <div class="row ">
                     <div class="col">
                         <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label">Data:</label>
-                            <input type="date" class="form-control" name="rua">
+                            <label for="exampleFormControlInput2" class="form-label">Data:</label>
+                            <input type="date" class="form-control" name="data">
                         </div>
                     </div>
                     <div class="col">
                         <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label">Número do Documento:</label>
-                            <input type="number" class="form-control" name="bairo" >
+                            <label for="exampleFormControlInput3" class="form-label">Número do Documento:</label>
+                            <input type="number" class="form-control" name="num_documento">
                         </div>
                     </div>
                 </div>
@@ -187,13 +187,13 @@
                     <h6>*Pode ser expedido o Título Definitivo desta área?</h6>
                     <div class="form-check px-5">
                         
-                        <input class="form-check-input" type="radio" name="flexRadioDefault">
+                        <input class="form-check-input" type="radio" name="expedir_titulo" value="S">
                         <label class="form-check-label">
                             Sim
                         </label>
                     </div>
                     <div class="form-check px-5">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" >
+                    <input class="form-check-input" type="radio" name="expedir_titulo" value="N" >
                     <label class="form-check-label">
                         Não
                     </label>
@@ -203,44 +203,45 @@
             <div class="row mb-3">
                 <div class="col">
                  <label for="exampleFormControlTextarea1" class="form-label">Se a resposta anterior for Não, descreva o motivo abaixo.</label>
-                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="6"></textarea>
+                 <textarea class="form-control" name="justificativa" rows="6"></textarea>
                 </div>
             </div>
             <hr>
             <div class="row ">
                 <div class="col">
                     <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">Data:</label>
-                        <input type="date" class="form-control" name="rua">
+                        <label for="exampleFormControlInput2" class="form-label">Data de fiscalização:</label>
+                        <input type="date" class="form-control" name="dt_fiscalizacao">
                     </div>
                 </div>
             </div>
             <div class="row ">
                 <div class="col">
                     <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">Nome do Fiscal 1</label>
-                        <input type="text" class="form-control" name="bairo" >
+                        <label for="exampleFormControlInput3" class="form-label">Nome do Fiscal 1</label>
+                        <input type="text" class="form-control" name="fiscal_1" >
                     </div>
                 </div>
                 <div class="col">
                     <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">Nome do Fiscal 2</label>
-                        <input type="text" class="form-control" name="bairo" >
+                        <label for="exampleFormControlInput4" class="form-label">Nome do Fiscal 2</label>
+                        <input type="text" class="form-control" name="fiscal_2" >
                     </div>
                 </div>
             </div>
             <div class="row ">
                 <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">Nome do agente que realizou a medição do terreno</label>
-                    <input type="text" class="form-control" name="bairo" >
+                    <label for="exampleFormControlInput5" class="form-label">Nome do agente que realizou a medição do terreno</label>
+                    <input type="text" class="form-control" name="agente_medicao" >
                 </div>
             </div>
             <div class="row">
                 <div class="mb-5">
                     <label for="formFile" class="form-label">Foto do formulário com assinatura do interessado</label>
-                    <input class="form-control" type="file" id="formFile">
+                    <input class="form-control" type="file" name="foto_termo_medicao">
                 </div>
             </div>
+            <button type="submit" class="btn btn-primary mb-5">Salvar</button>
         </form>
     </div>
    </div>

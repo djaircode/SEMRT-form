@@ -10,6 +10,13 @@
            <div class="col text-end">
             <a href="{% url 'cadastrar_imovel' %}" class="btn btn-primary">Cadastar imóvel</a>
            </div>
+           {% if messages %}
+           <br>
+           {% for message in messages %}
+              <div class="alert {{message.tags}}" >{{message}}</div>
+           {% endfor %}
+          
+           {% endif %}
         </div>
         <table class="table">
             <thead>

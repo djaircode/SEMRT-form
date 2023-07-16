@@ -4,6 +4,13 @@ Django settings for core project.
 
 from pathlib import Path
 import os
+from django.contrib.messages import constants
+
+# Cloudinary imports
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -84,7 +91,7 @@ DATABASES = {
         'NAME': 'postgres',
         'USER': 'postgres',
         'PASSWORD': '8MFfbFgD!xw3C3X',
-        'HOST': 'db.wkcxjuanerjakdanxtea.supabase.co',
+        'HOST': 'db.hghpvjvwtrmrqpymoqha.supabase.co',
         'PORT': '5432',
     }
 
@@ -137,3 +144,20 @@ MEDIA_URL = '/media/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# Cloudinary images
+cloudinary.config(
+    cloud_name ="dgls3lox0",
+    api_key ="978196493217654",
+    api_secret ="fL5P4FTGk1u-1fXSIrReDM64hv4",
+)
+
+# Messagens( inserir no final do arquivo )
+MESSAGE_TAGS = {
+    constants.DEBUG: 'alert-primary',
+    constants.ERROR: 'alert-danger',
+    constants.SUCCESS: 'alert-success',
+    constants.INFO: 'alert-info',
+    constants.WARNING: 'alert-warning',
+}
