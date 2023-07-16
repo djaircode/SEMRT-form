@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+    <div class="container">
+        <div class="row mt-3 mb-2 py-2">
+           <div class="col">
+            <h4>Imoveis cadastrados</h4>
+           </div>
+           <div class="col text-end">
+            <a href="{% url 'cadastrar_imovel' %}" class="btn btn-primary">Cadastar imóvel</a>
+           </div>
+        </div>
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">N°</th>
+                <th scope="col">Interessado (a)</th>
+                <th scope="col">Data do cadastro</th>
+                <th scope="col">Nome do Fiscal</th>
+                <th scope="col" class="text-center ">Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+                <td class="text-cente" style="max-width: 80px;">
+                    <a href="#" class="btn btn-info mx-2">Ver</a>
+                    <a href="#" class="btn btn-danger">Excluir</a>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td>@fat</td>
+                <td class="text-cente" style="max-width: 80px;">
+                    <a href="#" class="btn btn-info mx-2">Ver</a>
+                    <a href="#" class="btn btn-danger">Excluir</a>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td colspan="2">Larry the Bird</td>
+                <td>@twitter</td>
+                <td class="text-cente" style="max-width: 80px;">
+                    <a href="#" class="btn btn-info mx-2">Ver</a>
+                    <a href="#" class="btn btn-danger">Excluir</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+{% endblock %}
